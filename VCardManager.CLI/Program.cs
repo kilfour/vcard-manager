@@ -1,16 +1,21 @@
-﻿using VCardManager.CLI;
+﻿using Microsoft.Extensions.DependencyInjection;
+using VCardManager.CLI;
 using VCardManager.Core;
+using VCardManager.Core.Abstractions;
 
-var console = new SystemConsole();
-var fileStore = new FileSystemStore();
+var services = new ServiceCollection();
+services.AddTransient<IConsole, SystemConsole>();
+services.AddTransient<IFileStore, FileSystemStore>();
+services.AddTransient<IAmAReceptionist, TheReceptionist>();
+services.AddTransient<IAmInquisitive, Inquisitor>();
+services.AddTransient<IAmAPrinter, ThePrinter>();
+services.AddTransient<IAmAStackOfPaper, StackOfPaper>();
+services.AddTransient<IAmARolodex, Rolodex>();
+services.AddTransient<IMenu, Menu>();
 
-var receptionist = new TheReceptionist();
-var inquisitor = new Inquisitor(console, receptionist);
-var printer = new ThePrinter(console);
-var stackOfPaper = new StackOfPaper(fileStore);
-var rolodex = new Rolodex(stackOfPaper, inquisitor, printer, fileStore);
-
-new Menu(rolodex, console).Run();
+services.BuildServiceProvider()
+    .GetRequiredService<IMenu>()
+    .Run();
 
 
 
