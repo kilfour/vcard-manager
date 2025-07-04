@@ -1,3 +1,5 @@
+using VCardManager.Core.Abstractions;
+
 namespace VCardManager.Core;
 
 public interface IAmARolodex
@@ -14,12 +16,14 @@ public class Rolodex : IAmARolodex
     private readonly IAmAStackOfPaper stackOfPaper;
     private readonly IAmInquisitive inquisitor;
     private readonly IAmAPrinter printer;
+    private readonly IFileStore fileStore;
 
-    public Rolodex(IAmAStackOfPaper stackOfPaper, IAmInquisitive inquisitor, IAmAPrinter printer)
+    public Rolodex(IAmAStackOfPaper stackOfPaper, IAmInquisitive inquisitor, IAmAPrinter printer, IFileStore fileStore)
     {
         this.stackOfPaper = stackOfPaper;
         this.inquisitor = inquisitor;
         this.printer = printer;
+        this.fileStore = fileStore;
     }
 
     public void ShowAllContacts()
@@ -52,6 +56,16 @@ public class Rolodex : IAmARolodex
 
     public void ExportContact()
     {
-        throw new NotImplementedException();
+        var searchString = inquisitor.GetSearchString();
+        var cards = stackOfPaper.FindAllContactCards(searchString);
+        printer.PrintConfirmExport();
+        printer.PrintContactCards(cards);
+        if (inquisitor.Confirm())
+        {
+            foreach (var card in cards)
+            {
+                fileStore.WriteAllText($"{card.FullName.Replace(" ", "_")}.vcf", card.ToVCardFormatString());
+            }
+        }
     }
 }

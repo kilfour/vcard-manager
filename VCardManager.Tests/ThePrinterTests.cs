@@ -1,4 +1,3 @@
-using System.Text;
 using VCardManager.Core;
 using VCardManager.Tests._tools;
 
@@ -35,5 +34,14 @@ public class ThePrinterTests
         var printer = new ThePrinter(console);
         printer.PrintCardsDeleted();
         Assert.Equal("The Contact Cards have been deleted.", console.Output.Single());
+    }
+
+    [Fact]
+    public void PrintConfirmExport()
+    {
+        var console = new ConsoleSpy();
+        var printer = new ThePrinter(console);
+        printer.PrintConfirmExport();
+        Assert.Equal("Do you want to export these Contact Cards (y/n) ?", console.Output.Single());
     }
 }

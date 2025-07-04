@@ -7,6 +7,7 @@ public interface IAmAPrinter
     void PrintContactCards(IEnumerable<ContactCard> cards);
     void PrintConfirmDeletion();
     void PrintCardsDeleted();
+    void PrintConfirmExport();
 }
 
 public class ThePrinter : IAmAPrinter
@@ -33,5 +34,10 @@ public class ThePrinter : IAmAPrinter
     public void PrintCardsDeleted()
     {
         console.WriteLine("The Contact Cards have been deleted.");
+    }
+
+    public void PrintConfirmExport()
+    {
+        console.WriteLine("Do you want to export these Contact Cards (y/n) ?");
     }
 }
