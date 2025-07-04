@@ -8,7 +8,7 @@ var receptionist = new TheReceptionist();
 var inquisitor = new Inquisitor(console, receptionist);
 var printer = new ThePrinter(console);
 var stackOfPaper = new StackOfPaper(fileStore);
-var rolodex = new Rolodex(stackOfPaper, inquisitor, printer);
+var rolodex = new Rolodex(stackOfPaper, inquisitor, printer, fileStore);
 
 new Menu(rolodex, console).Run();
 
