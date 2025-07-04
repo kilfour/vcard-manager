@@ -1,9 +1,9 @@
 
 namespace VCardManager.Tests;
 
-public class TheRectionistTests
+public class TheReceptionistTests
 {
-    private readonly IAmAReceptionist _receptionist = new TheReceptionist();
+    private readonly TheReceptionist _receptionist = new TheReceptionist();
 
     [Theory]
     [InlineData("0487112233", true)]

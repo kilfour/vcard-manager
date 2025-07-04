@@ -6,7 +6,7 @@ using VCardManager.Core.Abstractions;
 var services = new ServiceCollection();
 services.AddTransient<IConsole, SystemConsole>();
 services.AddTransient<IFileStore, FileSystemStore>();
-services.AddTransient<IAmAReceptionist, TheReceptionist>();
+services.AddTransient<TheReceptionist>();
 services.AddTransient<IAmInquisitive, Inquisitor>();
 services.AddTransient<IAmAPrinter, ThePrinter>();
 services.AddTransient<IAmAStackOfPaper, StackOfPaper>();

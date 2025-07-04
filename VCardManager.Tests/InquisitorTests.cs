@@ -7,13 +7,13 @@ namespace VCardManager.Tests;
 public class InquisitorTests
 {
     private readonly ConsoleSpy console;
-    private readonly Mock<IAmAReceptionist> receptionist;
+    private readonly Mock<TheReceptionist> receptionist;
     private readonly IAmInquisitive inquisitor;
 
     public InquisitorTests()
     {
         console = new ConsoleSpy();
-        receptionist = new Mock<IAmAReceptionist>();
+        receptionist = new Mock<TheReceptionist>();
         inquisitor = new Inquisitor(console, receptionist.Object);
     }
 

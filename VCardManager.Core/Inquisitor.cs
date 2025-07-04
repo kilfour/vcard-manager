@@ -13,9 +13,9 @@ public interface IAmInquisitive
 public class Inquisitor : IAmInquisitive
 {
     private readonly IConsole console;
-    private readonly IAmAReceptionist receptionist;
+    private readonly TheReceptionist receptionist;
 
-    public Inquisitor(IConsole console, IAmAReceptionist receptionist)
+    public Inquisitor(IConsole console, TheReceptionist receptionist)
     {
         this.console = console;
         this.receptionist = receptionist;

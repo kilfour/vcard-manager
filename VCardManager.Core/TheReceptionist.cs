@@ -2,14 +2,9 @@ using Superpower;
 using Superpower.Parsers;
 
 // This one was just for fun, regex'll do
-public interface IAmAReceptionist
+public class TheReceptionist
 {
-    bool IsValidPhoneNumber(string number);
-}
-
-public class TheReceptionist : IAmAReceptionist
-{
-    public bool IsValidPhoneNumber(string number)
+    public virtual bool IsValidPhoneNumber(string number)
     {
         if (string.IsNullOrWhiteSpace(number))
             return false;
