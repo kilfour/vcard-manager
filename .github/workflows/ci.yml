@@ -26,7 +26,7 @@ jobs:
         run: dotnet build VCardManager.sln --no-restore --configuration Release
 
       - name: Run tests
-        run: dotnet test VCardManager.Tests/VCardManager.Tests.csproj --no-build --configuration Release --logger trx
+        run: dotnet test VCardManager.Tests/VCardManager.Tests.csproj --no-build --configuration Release --logger trx --filter "Category!=Integration"
 
       - name: Run integration tests
-        run: dotnet test VCardManager.SlowTests/VCardManager.SlowTests.csproj --no-build --configuration Release --logger trx
+        run: dotnet test VCardManager.SlowTests/VCardManager.SlowTests.csproj --no-build --configuration Release --logger trx --filter "Category=Integration"

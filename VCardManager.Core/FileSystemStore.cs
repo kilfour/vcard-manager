@@ -1,6 +1,6 @@
 using VCardManager.Core.Abstractions;
 
-namespace VCardManager.CLI;
+namespace VCardManager.Core;
 
 public class FileSystemStore : IFileStore
 {

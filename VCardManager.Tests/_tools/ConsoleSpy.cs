@@ -11,6 +11,7 @@ public class ConsoleSpy : IConsole
     public void WriteLine(string message) => Output.Add(message);
     public string ReadLine() => _inputs.Count > 0 ? _inputs.Dequeue() : string.Empty;
 
-    public void AddInput(string input) => _inputs.Enqueue(input);
+    //public void AddInput(string input) => _inputs.Enqueue(input);
+    public void AddInput(params string[] input) => input.ToList().ForEach(_inputs.Enqueue);
 }
 
